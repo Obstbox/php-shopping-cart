@@ -26,12 +26,7 @@ class Cart
         // find product in cart
         foreach ($this->items as $item) {
             if ($item->getProduct()->getId() === $product->getId()){
-                if ($item->getQuantity() + $quantity > $item->product()->getAvailableQuantity()){
-                    throw new Exception("Product quantity can not be more than ".$product->getAvailableQuantity());
-                }
-
-                // then else
-                $item->setQuantity($item->getQuantity() + $quantity);
+                $item->increaseQuantity($quantity);
             }
         }
         $cartItem = new CartItem($product, $quantity);
