@@ -19,7 +19,7 @@ class Cart
      *
      * @param Product $product
      * @param int $quantity
-     * @param CartItem
+     * @return CartItem
      */
     public function addProduct(Product $product, int $quantity)
     {
