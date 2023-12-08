@@ -9,6 +9,22 @@ class Product
     private int $availableQuantity;
 
     /**
+     * Product constructor.
+     *
+     * @param int       $id
+     * @param string    $title
+     * @param float     $price
+     * @param int       $availableQuantity
+     */
+    public function __construct($id, $title, $price, $availableQuantity)
+    {
+        $this->id = $id;
+        $this->title = $title;
+        $this->price = $price;
+        $this->availableQuantity = $availableQuantity;
+    }
+
+    /**
      * @return int
      */
     public function getId()
