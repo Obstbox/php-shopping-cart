@@ -19,19 +19,29 @@ class Cart
      *
      * @param Product $product
      * @param int $quantity
-     * @return CartItem
+     * @return void
+     * @throws \Exception
      */
     public function addProduct(Product $product, int $quantity)
     {
-        $cartItem = new CartItem($product, 0);
-
         // find product in cart
-        foreach ($this->items as $item) {
-            if ($item->getProduct()->getId() === $product->getId()){
-                $cartItem = $item;
-            }
+        $cartItem = $this->findCartItem($product->getId());
+        if ($cartItem === null){
+            $cartItem = new CartItem($product, 0);
+            $this->items[] = $cartItem;
         }
         $cartItem->increaseQuantity($quantity);
+    }
+
+    public function findCartItem(int $product)
+    {
+        foreach ($this->items as $item) {
+            if ($item->getProduct()->getId() === $productId()){
+                return $item->getProduct()
+            }
+        }
+        // if not find
+        return null;
     }
 
     /**
