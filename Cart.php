@@ -23,13 +23,15 @@ class Cart
      */
     public function addProduct(Product $product, int $quantity)
     {
+        $cartItem = new CartItem($product, 0);
+
         // find product in cart
         foreach ($this->items as $item) {
             if ($item->getProduct()->getId() === $product->getId()){
-                $item->increaseQuantity($quantity);
+                $cartItem = $item;
             }
         }
-        $cartItem = new CartItem($product, $quantity);
+        $cartItem->increaseQuantity($quantity);
     }
 
     /**
