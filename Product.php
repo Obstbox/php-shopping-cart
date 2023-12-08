@@ -96,12 +96,12 @@ class Product
      *
      * @param Cart $cart
      * @param int $quantity
-     * @param void
-     * @param CartItem
+     * @return \CartItem
+     * @throws \Exception
      */
     public function addToCart(Cart $cart, int $quantity)
     {
-        // TODO Implement method
+        return $this->addProduct($this, $quantity);
     }
 
     /** Remove product from cart

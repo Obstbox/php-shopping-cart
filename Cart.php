@@ -19,7 +19,7 @@ class Cart
      *
      * @param Product $product
      * @param int $quantity
-     * @return void
+     * @return \CartItem
      * @throws \Exception
      */
     public function addProduct(Product $product, int $quantity)
@@ -31,6 +31,7 @@ class Cart
             $this->items[] = $cartItem;
         }
         $cartItem->increaseQuantity($quantity);
+        return $cartItem;
     }
 
     public function findCartItem(int $product)
@@ -61,7 +62,11 @@ class Cart
      */
     public function getTotalQuantity()
     {
-        // TODO Implement method
+        $sum = 0;
+        foreach ($this->items as $item) {
+            $sum += $item->getQuantity();
+        }
+        return $sum;
     }
 
     /**
