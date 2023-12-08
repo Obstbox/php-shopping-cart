@@ -23,7 +23,11 @@ class Cart
      */
     public function addProduct(Product $product, int $quantity)
     {
-        // TODO Implement method
+        // find product in cart
+        foreach ($this->items as $item) {
+            if ($item->getProduct()->)
+        }
+        $cartItem = new CartItem($product, $quantity);
     }
 
     /**
